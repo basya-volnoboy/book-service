@@ -27,7 +27,7 @@ public class Author implements Serializable{
 	@Id
 	 String name;
      LocalDate birthDate;
-     @ManyToMany(mappedBy = "authors", cascade = CascadeType.ALL) //атор родитель по отношению к нигам - на стороне родительской енттити обозначаем мепд бай //cascade значит удалтся все книги принадлежайщие автору- каскадное удаление
+     @ManyToMany(mappedBy = "authors", cascade = CascadeType.ALL) //автор родитель по отношению к нигам - на стороне родительской енттити обозначаем мепд бай //cascade значит удалтся все книги принадлежайщие автору- каскадное удаление
      Set<Book> books;
      
 	public Author(String name, LocalDate birthDate) {

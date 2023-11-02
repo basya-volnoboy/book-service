@@ -29,7 +29,7 @@ public class BookServiceImpl implements BookService {
 	final ModelMapper modelMapper;
 	
 	@Override
-	@Transactional
+	@Transactional //транзакция делает в конце метода flush() для em
 	public boolean addBook(BookDto bookDto) {
 		if(bookRepository.existsById(bookDto.getIsbn())) {
 			return false;
@@ -70,6 +70,7 @@ public class BookServiceImpl implements BookService {
 		return modelMapper.map(book, BookDto.class);
 	}
 
+	//TODO
 	@Override
 	@Transactional(readOnly = true)//блокировка только на чтение
 	public Iterable<BookDto> findBooksByAuthor(String authorName) {
@@ -83,6 +84,7 @@ public class BookServiceImpl implements BookService {
 //				.collect(Collectors.toList());
 	}
 
+	//TODO
 	@Override
 	@Transactional(readOnly = true)
 	public Iterable<BookDto> findBooksByPublisher(String publisherName) {
@@ -96,6 +98,7 @@ public class BookServiceImpl implements BookService {
 //				.collect(Collectors.toList());
 	}
 
+	//TODO
 	@Override
 	public Iterable<AuthorDto> findBookAuthors(String isbn) {
 		Book book = bookRepository.findById(isbn).orElseThrow(EntityNotFoundException:: new);
@@ -104,7 +107,7 @@ public class BookServiceImpl implements BookService {
 				.collect(Collectors.toList());
 	}
 
-	
+	//TODO
 	@Override
 	@Transactional(readOnly = true)
 	public Iterable<String> findPublishersByAuthor(String authorName) {

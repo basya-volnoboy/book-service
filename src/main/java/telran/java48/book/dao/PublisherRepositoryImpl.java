@@ -36,8 +36,8 @@ public class PublisherRepositoryImpl implements PublisherRepository {
 
 	@Override
 	public Publisher save(Publisher publisher) {
-		em.persist(publisher);
-		//em.merge(publisher);
+		em.persist(publisher); //только сохраняет - не даст по ошибке перезаписать информацию
+		//em.merge(publisher); //может перезаписать если видит изменеия в переданном существующем обьекте
 		return publisher;
 	}
 
